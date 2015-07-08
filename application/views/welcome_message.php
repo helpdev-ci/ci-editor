@@ -77,7 +77,6 @@
 
 		<p>The corresponding controller for this page is found at:</p>
 		<code>application/controllers/welcome.php</code>
-		<hr>
 
 		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="<?php echo base_url('user_guide'); ?>/">User Guide</a>.</p>
 	</div>
