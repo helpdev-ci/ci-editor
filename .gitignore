@@ -1,12 +1,12 @@
 .DS_Store
 
-ci/application/cache/*
-!ci/application/cache/index.html
-!ci/application/cache/.htaccess
+!ci-editor/cache/*
+!ci-editor/cache/index.html
+!ci-editor/cache/.htaccess
 
-ci/application/logs/*
-!ci/application/logs/index.html
-!ci/application/logs/.htaccess
+!ci-editor/logs/*
+!ci-editor/logs/index.html
+!ci-editor/logs/.htaccess
 
 test/*
 uploads/*
