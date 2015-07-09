@@ -16,7 +16,7 @@
 | environments.
 |
 */
-$config['base_url'] = 'http://localhost/editor/';
+$config['base_url'] = 'http://localhost/ci-editor/';
 
 /*
 |--------------------------------------------------------------------------

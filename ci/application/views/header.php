@@ -45,12 +45,12 @@
     <script type="text/javascript">
         tinymce.init({
             selector: "#files-selected",
-            plugins:"autoresize,textcolor,autolink,link",
+            plugins:"autoresize,textcolor,autolink,link,image",
             toolbar: "undo redo | styleselect | fontsizeselect | forecolor backcolor | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
             //toolbar: "forecolor backcolor",
             autoresize_min_height : "20px",
             autoresize_max_height : "300px",
-            content_css : "assets/css/tinymce.css",
+            content_css : "../assets/css/tinymce.css",
         });
     </script>
 </head>

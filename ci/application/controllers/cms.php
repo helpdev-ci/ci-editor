@@ -30,8 +30,13 @@ class cms extends CI_Controller {
 
 	public function editor_form()
 	{
-		
+		$upload_rand = rand(1111, 9999);
+		$upload_date= date("YmdHi");
+
+		$create_ref = $upload_date."/".$upload_rand;
+
 		$data['editor'] = array(
+			'create_ref' => $create_ref,
 			'content' => ''
 			);
 		$this->load->view('header', $data);
@@ -39,29 +44,60 @@ class cms extends CI_Controller {
 		$this->load->view('footer', $data);
 	}
 
+	private function rand_string($length, $chars) {
+		return substr(str_shuffle($chars), 0, $length);
+	}
+
 	public function upload()
 	{
-		$upload_rand = rand(1111, 9999);
-		$upload_date= date("Ymd");
+		$upload_rand = $this->rand_string(2, '123456789').$this->rand_string(2, 'ABCDEFGHIJKLMNOP').$this->rand_string(5, '123456789');
+		$upload_date= date("YmdH");
+
+		/*$create_ref = $this->input->post('create_ref');
+
+		if (!$create_ref || empty($create_ref)) {
+
+			$data_return['error'] = 1;
+			$data_return['msg'] = 'Missing reference';
+			echo json_encode($data_return);
+			return false;
+		}
+
+		$explode_path = explode("/", $create_ref);*/
 
 		$upload_path = 'uploads/';
 
 
 		if (!is_dir($upload_path)) {
-			mkdir(FCPATH.$upload_path, 0777, TRUE);
+			if (!mkdir(FCPATH.$upload_path, 0777, TRUE)) {
+				$data_return['error'] = 1;
+				$data_return['msg'] = "Create '".$upload_path ."' is failed.";
+				echo json_encode($data_return);
+				return false;
+			}
 		}
 
 		$upload_path = $upload_path.$upload_date."/";
 		
 		if (!is_dir($upload_path)) {
-			mkdir(FCPATH.$upload_path, 0777, TRUE);
+			if (!mkdir(FCPATH.$upload_path, 0777, TRUE)) {
+				$data_return['error'] = 1;
+				$data_return['msg'] = "Create '".$upload_path ."' is failed.";
+				echo json_encode($data_return);
+				return false;				
+			}
 		}
 
-		$upload_path = $upload_path.$upload_rand."/";
+		/*$upload_path = $upload_path.$explode_path[1]."/";
 
 		if (!is_dir($upload_path)) {
-			mkdir(FCPATH.$upload_path, 0777, TRUE);
-		}
+			if (!mkdir(FCPATH.$upload_path, 0777, TRUE)) {
+				$data_return['error'] = 1;
+				$data_return['msg'] = "Create '".$upload_path ."' is failed.";
+				echo json_encode($data_return);
+				return false;				
+			}
+		}*/
 
 		$config['upload_path'] = FCPATH.$upload_path;
 		$config['allowed_types'] = 'gif|jpg|png';
@@ -69,7 +105,7 @@ class cms extends CI_Controller {
 		$config['max_width']  = '1024';
 		$config['max_height']  = '768';*/		
 
-		//$config['file_name']  = $_FILES['attach']['name'];
+		$config['file_name']  = $upload_rand;
 
 		$this->load->library('upload', $config);
 
@@ -91,6 +127,11 @@ class cms extends CI_Controller {
 
 		echo json_encode($data_return);
 
+	}
+
+	public function json_upload($config, $path = 'uploads/', $file) 
+	{
+		### Disable
 	}
 }
 

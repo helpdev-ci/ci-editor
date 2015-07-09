@@ -31,7 +31,7 @@
 	                			var areaValue = $("#files-selected").val();
 	                			//$('#files-selected').val(areaValue + "\n" + obj.msg + "\n"); /// do whatever you want here.
 	                			//$('#files-selected').focus();
-	                			tinyMCE.execCommand('mceInsertContent', false, '<img alt="'+ obj.img_name +'" src="'+ obj.img_url +'" />');
+	                			tinyMCE.execCommand('mceInsertContent', false, '<img title="'+ obj.img_name +'" alt="'+ obj.img_name +'" src="'+ obj.img_url +'" />');
 	                			$('#insertIMG').html('');
 	                		} else {
 	                			console.log('error = 1');
@@ -109,13 +109,20 @@
             </h1>
         </div>
         <div class="col-lg-12">
-	<form id="editorForm" name="editorForm" method="post">
+	<form id="editorForm" name="editorForm" method="post" class="form-horizontal" role="form">
 		<textarea id="files-selected" cols="50" rows="10"><?php echo $editor['content']; ?></textarea>
 		<div id="insertIMG"></div>
 		<label>Select a picture:</label> <input type="file" name="attach" id="attach" />
-		<div class="text-right">
+		<div class="">
 		<!-- Indicates a successful or positive action -->
-		<button type="button" class="btn btn-success">Save</button>			
+  <div class="form-group">
+    <div class="control-label col-sm-2" for="create_ref">
+    	<input type="hidden" name="create_ref" id="create_ref" value="<?php echo $editor['create_ref']; ?>" placeholder="<?php echo $editor['create_ref']; ?>">
+    </div>
+    <div class="col-sm-10 text-right">
+      <button type="submit" class="btn btn-success">Save</button>
+    </div>
+  </div>
 		</div>
 	</form>
         </div>
