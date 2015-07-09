@@ -1,12 +1,13 @@
 .DS_Store
 
-application/cache/*
-!application/cache/index.html
-!application/cache/.htaccess
+ci/application/cache/*
+!ci/application/cache/index.html
+!ci/application/cache/.htaccess
 
-application/logs/*
-!application/logs/index.html
-!application/logs/.htaccess
+ci/application/logs/*
+!ci/application/logs/index.html
+!ci/application/logs/.htaccess
 
 test/*
 uploads/*
+example/*

@@ -56,7 +56,7 @@ if (defined('ENVIRONMENT'))
  * as this file.
  *
  */
-	$system_path = '../ci-include/system';
+	$system_path = 'ci/system';
 
 /*
  *---------------------------------------------------------------
@@ -72,7 +72,7 @@ if (defined('ENVIRONMENT'))
  * NO TRAILING SLASH!
  *
  */
-	$application_folder = '../ci-include/ci-editor';
+	$application_folder = 'ci/application';
 
 /*
  * --------------------------------------------------------------------
